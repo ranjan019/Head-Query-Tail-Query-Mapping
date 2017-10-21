@@ -48,6 +48,8 @@ def main():
     global file_path
     head_tail_df,missing_clicks,head_list,tail_list = separator(file_path)
     print head_list
+    print "taillist now"
+    print tail_list
     print len(head_list),len(tail_list),len(head_tail_df),len(missing_clicks)
 
 
