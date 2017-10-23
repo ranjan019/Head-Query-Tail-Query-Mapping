@@ -25,8 +25,12 @@ def calcEntityCheck(headQuery,tailQuery,dxtr):
 	common_entites=head_entities.intersection(tail_entities)
 	# print common_entites
 
-	entity_score= float(len(common_entites))/(len(head_entities)+len(tail_entities)-len(common_entites))
-	return entity_score
+	if (len(head_entities)+len(tail_entities)-len(common_entites))==0:	
+		return 0
+
+	else:	
+		entity_score= float(len(common_entites))/(len(head_entities)+len(tail_entities)-len(common_entites))
+		return entity_score
 
 
 # entity_check("Dexter is an American television series","Comedy Central is an American television channel")	

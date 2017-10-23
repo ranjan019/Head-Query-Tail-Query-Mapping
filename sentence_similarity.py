@@ -71,5 +71,5 @@ def symmetric_sentence_similarity(sentence1, sentence2):
     """ compute the symmetric sentence similarity using Wordnet """
     return (sentence_similarity(sentence1, sentence2) + sentence_similarity(sentence2, sentence1)) / 2
 
-def calQuerySimilarity(query1,query2):
-    print symmetric_sentence_similarity(query1, query2)
+def calcQuerySimilarity(query1,query2):
+    return symmetric_sentence_similarity(query1, query2)
