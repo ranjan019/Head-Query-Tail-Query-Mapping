@@ -2,6 +2,8 @@ import pandas as pd
 import pdb
 import sys
 from collections import defaultdict
+from gensim.models import word2vec
+
 
 #file_path = './test.txt'
 file_path = sys.argv[1]
@@ -113,9 +115,16 @@ def mapping(head_list,tail_list,url_head_Dict,url_tail_Dict):
 
 def main():
     global file_path
+
+    #configuring the word2vec
+    sentences=word2vec.Text8Corpus('/home/pulkit/IIIT-H/NLP_Project/text8')
+    model=word2vec.Word2Vec(sentences,size=10)
+
     head_list,tail_list,url_head_Dict,url_tail_Dict = tryNew(file_path)
     # print url_Dict
     mapping(head_list,tail_list,url_head_Dict,url_tail_Dict)
+
+    cosine_similarity(headQuery,tailQuery,model)
     # head_tail_df,missing_clicks,head_list,tail_list = separator(file_path)
     # print head_list
     # print "taillist now"
