@@ -1,6 +1,6 @@
 import numpy as np
 
-def cosine_similarity(headQuery,tailQuery,model):
+def calcCosineSimilarity(headQuery,tailQuery,model):
 	# calculating the head query features
 
 	#head query embedding

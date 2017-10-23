@@ -1,4 +1,4 @@
-def entity_check(headQuery,tailQuery,dxtr):
+def calcEntityCheck(headQuery,tailQuery,dxtr):
 
 	# getting entites in the head query
 	head_result=dxtr.nice_annotate(headQuery, min_conf=0.8)

@@ -1,9 +1,10 @@
 import numpy as np
 from sklearn.svm import SVC
 import pydexter
-from sentencesimilarity
+from sentence_similarity import calcQuerySimilarity
 from gensim.models import word2vec
-
+from cosine_similarity import calcCosineSimilarity
+from entity_check import calcEntityCheck
 
 def makingQueryPairVector(query1, query2):
 	list1=query1.split()
@@ -13,8 +14,12 @@ def makingQueryPairVector(query1, query2):
 	querypairvector.append(jcoef)
 	sentsim=calcQuerySimilarity(query1,query2)
 	querypairvector.append(sentsim)
-	cosine_similarity = cosine_similarity(query1,query2,model)
-	querypairvector.append(cosine_similarity)
+	cossim = cosine_similarity(query1,query2,model)
+	querypairvector.append(cossim)
+	namedentitysc=calcEntityCheck(query1,query2,) #3rd argument dxtr?????????
+	querypairvector.append(namedentitysc)
+	return querypairvector
+
 
 
 
