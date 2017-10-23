@@ -1,5 +1,19 @@
 import numpy as np
 from sklearn.svm import SVC
+import pydexter
+from sentencesimilarity
+
+
+def makingQueryPairVector(query1, query2):
+	list1=query1.split()
+	list2=query2.split()
+	jcoef=calcJaccard(list1,list2)
+	querypairvector=[]
+	querypairvector.append(jcoef)
+	sentsim=calcQuerySimilarity(query1,query2)
+	querypairvector.append(sentsim)
+ 
+
 
 X = np.array([[-1, -1], [-2, -1], [1, 1], [2, 1]])
 y = np.array([1, 1, 2, 2])
