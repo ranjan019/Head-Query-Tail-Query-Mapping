@@ -3,7 +3,7 @@ import pdb
 import sys
 from collections import defaultdict
 from gensim.models import word2vec
-
+import pydexter
 
 #file_path = './test.txt'
 file_path = sys.argv[1]
@@ -119,6 +119,9 @@ def main():
     #configuring the word2vec
     sentences=word2vec.Text8Corpus('/home/pulkit/IIIT-H/NLP_Project/text8')
     model=word2vec.Word2Vec(sentences,size=10)
+
+    # creating dexter client connection
+    dxtr = pydexter.DexterClient("http://dexterdemo.isti.cnr.it:8080/dexter-webapp/api/")
 
     head_list,tail_list,url_head_Dict,url_tail_Dict = tryNew(file_path)
     # print url_Dict
