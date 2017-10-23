@@ -44,8 +44,9 @@ def tryNew(file_path):
 def findScore(rankTail,rankHead):
     if rankTail==rankHead:
         return (6-rankHead)
-    elif :
-        pass
+    else:
+        return (5-abs(rankHead-rankTail))
+        
 
 def mapping(head_list,tail_list,url_head_Dict,url_tail_Dict):
     final_map = []
