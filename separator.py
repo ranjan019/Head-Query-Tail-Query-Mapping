@@ -10,6 +10,14 @@ TAIL_LIMIT = 2
 HEAD_LIMIT = 5
 MAX_RANK_ALLOWED = 5
 
+def calcJaccard(list1,list2):
+    s1=set(list1)
+    s2=set(list2)
+    inters=s1.intersection(s2)
+    uni=s1.union(s2)
+    return float(len(inters))/len(uni)
+
+
 def tryNew(file_path):
     log = pd.read_table(file_path)
     query_Dict = defaultdict(int)
