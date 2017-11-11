@@ -5,7 +5,6 @@ from collections import defaultdict
 import random
 
 from gensim.models import word2vec
-import pydexter
 
 #file_path = './test.txt'
 file_path = sys.argv[1]
@@ -13,13 +12,6 @@ file_path = sys.argv[1]
 TAIL_LIMIT = 5
 HEAD_LIMIT = 100
 MAX_RANK_ALLOWED = 5
-
-def calcJaccard(list1,list2):
-    s1=set(list1)
-    s2=set(list2)
-    inters=s1.intersection(s2)
-    uni=s1.union(s2)
-    return float(len(inters))/len(uni)
 
 
 def tryNew(file_path):
@@ -134,9 +126,7 @@ def mapping(head_list,tail_list,url_head_Dict,url_tail_Dict):
 def main():
     global file_path
 
-    #configuring the word2vec
-    #sentences=word2vec.Text8Corpus('/home/pulkit/IIIT-H/NLP_Project/text8')
-    #model=word2vec.Word2Vec(sentences,size=10)
+    
 
     # creating dexter client connection
     

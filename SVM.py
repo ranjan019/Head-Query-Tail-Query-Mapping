@@ -15,7 +15,7 @@ def calcJaccard(list1,list2):
 	uni=s1.union(s2)
 	if len(uni)==0:
 		return 0
-		
+
 	return float(len(inters))/len(uni)
 
 def makingQueryPairVector(query1, query2,model,dxtr):
@@ -51,26 +51,29 @@ if __name__ == '__main__':
 	train_feature_matrix=[]
 	train_labels=[]
 
+	count=1
 	with open("train_data.txt","r") as train_data:
 		for sample in train_data:
-			print "reading training sample"
+			print "reading training sample: ",count
 			items=sample.split(",")
 			train_feature_vector=makingQueryPairVector(items[0],items[1],model,dxtr)
 			train_labels.append(items[2])
 			train_feature_matrix.append(train_feature_vector)
+			count+=1
 
 	test_feature_matrix=[]
 	test_labels=[]
 
+	count=1
 	with open("test_data.txt","r") as test_data:
 		for sample in test_data:
 
-			print "reading test sample"
+			print "reading test sample: ",count
 			items=sample.split(",")
 			test_feature_vector=makingQueryPairVector(items[0],items[1],model,dxtr)
 			test_labels.append(items[2])
 			test_feature_matrix.append(test_feature_vector)
-
+			count+=1
 
 	
 	train_X=np.array(train_feature_matrix)
