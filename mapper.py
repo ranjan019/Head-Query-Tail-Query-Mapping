@@ -2,6 +2,7 @@ import sys
 import gensim
 import keras
 import numpy as np
+from keras.models import load_model
 
 HEAD_QUERY_PATH = './head150.txt'
 Word2vec_PATH = './w2vNet.model'
@@ -37,4 +38,4 @@ if __name__== "__main__":
     l1 = len(head_X)
     for i in range(l1):
         test = [np.append(head_X[i],tail_vector)]
-        print neuralNetModel.predict(test)
+        print head_queries[i],neuralNetModel.predict(test)

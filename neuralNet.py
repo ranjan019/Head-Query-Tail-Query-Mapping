@@ -1,5 +1,4 @@
 import sys
-import numpy as np
 import keras
 import numpy as np
 # import pydexter
@@ -93,7 +92,7 @@ if __name__== "__main__":
 	train_data_word = data[:int(0.8*total_data)]
 	l1 = len(train_data_word)
 	test_data_word = data[int(0.8*total_data):]
-	l2 = len(test_data_word)					
+	l2 = len(test_data_word)
 	train_X = np.zeros((l1,word2vecLen),dtype=float)
 	train_Y = np.zeros((l1,1),dtype=int)
 	test_X = np.zeros((l2,word2vecLen),dtype=float)
