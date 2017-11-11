@@ -5,6 +5,7 @@ The goal of this project is to develop a method to map long-tail queries to head
 
 ### Data Processing:
 AOL data contained queries along with the urls clicked (click-through data) and the rank of the url on the search page.
+
 We separated the search queries into head queries and tail queries based on their frequency. Queries with frequency greater than equal to 150 were classified into head queries and queries with frequency less than equal to 5 were classified into tail queries.
 Each head query - tail query pair was marked relevant (1) if:
 The click-through url is same for both the head query and the tail query, and the rank of the url is <= 5 in both the cases.
