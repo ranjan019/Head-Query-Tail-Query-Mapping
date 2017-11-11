@@ -11,6 +11,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from gensim.models.keyedvectors import KeyedVectors
+from mapper import *
 
 word2vecLen = 100 #50 for each query
 
@@ -84,6 +85,10 @@ if __name__== "__main__":
 	with open(sys.argv[1],'r') as f:
 		for l in f:
 			data.append(l)
+	tailQueryList = []
+	with open('./tailQuery.txt') as f:
+		for l in f:
+			tailQueryList.append(l)
 	# print len(data)
 	print "Loading Model Done"
 	modelVec = gensim.models.Word2Vec.load(Word2vec_PATH)
@@ -117,11 +122,26 @@ if __name__== "__main__":
 			test_Y[i] = 0
 		i += 1
 
-	#for i in range(l1):
-	#	print train_X[i]
 	modelNet = NeuralNet(train_X,train_Y)
 	modelNet.save('my_model1.h5')
 	finalAns = findAnswers(test_X,modelNet,train_Y)
+	head_queries , head_X = createHeadVectors(modelVec)
+	head_queries = head_queries.reshape(head_queries.shape[0],-1)
+	for query in tailQueryList:
+		print "================"
+		print "Calculating for :", query
+		tailVec =  wordTovec2(query,modelVec)
+		l1 = len(head_queries)
+		query_X = np.zeros((l1,word2vecLen),dtype=float)
+		for i in range(len(head_queries)):
+			query_X[i] = np.append(head_X[i],tailVec)
+		queryAns = modelNet.predict(query_X)
+		query_scorePair = np.concatenate((head_queries,queryAns),axis=1)
+		# pdb.set_trace()
+		query_scorePair = query_scorePair[np.argsort(query_scorePair[:, 1])]
+		for i in range(5):
+			print query," : ",query_scorePair[l1-i-1]
+
 	#print findAccuracy(finalAns,train_Y)
 	#f = open('output.txt','w')
 	#for i in range(len(finalAns)):
