@@ -53,6 +53,6 @@ There are 8 such sections in this form. "
 
 **Highlight of the analysis:**
 
-![Final Table](https://imgur.com/a/KWUMY)
+![Final Table](Head-Query-Tail-Query-Mapping/final.png)
 
 
