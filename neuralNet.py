@@ -40,11 +40,11 @@ def wordTovec(headQuery,tailQuery,model):
 
 def NeuralNet(train_X,train_Y):
 	model = Sequential()
-	model.add(Dense(word2vecLen,activation='tanh',input_dim=word2vecLen))
-	model.add(Dense(10,activation='tanh'))
+	model.add(Dense(word2vecLen,activation='relu',input_dim=word2vecLen))
+	model.add(Dense(word2vecLen,activation='relu'))
 	model.add(Dropout(0.23))
-	model.add(Dense(10,activation='tanh'))
-	model.add(Dropout(0.26))
+	# model.add(Dense(word2vecLen/2,activation='tanh'))
+	# model.add(Dropout(0.26))
 	model.add(Dense(1,activation='sigmoid'))
 	# model.add(Dropout(0.29))
 	sgd = optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-08, clipnorm=1.)
@@ -80,8 +80,8 @@ def findAccuracy(y_test,actual_ans):
 
 if __name__== "__main__":
 	data = []
-	#Word2vec_PATH = '../word2vec__GoogleNews_100Bwords__300Dvectors__3M_vocab.bin'
-	Word2vec_PATH = './w2vNet.model'
+	Word2vec_PATH = '../word2vec__GoogleNews_100Bwords__300Dvectors__3M_vocab.bin'
+	#Word2vec_PATH = './w2vNet.model'
 	with open(sys.argv[1],'r') as f:
 		for l in f:
 			data.append(l)
@@ -91,10 +91,10 @@ if __name__== "__main__":
 			tailQueryList.append(l)
 	# print len(data)
 	print "Loading Model Done"
-	modelVec = gensim.models.Word2Vec.load(Word2vec_PATH)
-	#modelVec = KeyedVectors.load_word2vec_format(Word2vec_PATH, binary=True)
+	#modelVec = gensim.models.Word2Vec.load(Word2vec_PATH)
+	modelVec = KeyedVectors.load_word2vec_format(Word2vec_PATH, binary=True,limit=500000)
 	total_data = len(data)
-	train_data_word = data[:int(0.8*total_data)]
+	train_data_word = data
 	l1 = len(train_data_word)
 	test_data_word = data[int(0.8*total_data):]
 	l2 = len(test_data_word)
@@ -123,7 +123,7 @@ if __name__== "__main__":
 		i += 1
 
 	modelNet = NeuralNet(train_X,train_Y)
-	modelNet.save('my_model1.h5')
+	modelNet.save('my_model3.h5')
 	finalAns = findAnswers(test_X,modelNet,train_Y)
 	head_queries , head_X = createHeadVectors(modelVec)
 	head_queries = head_queries.reshape(head_queries.shape[0],-1)
