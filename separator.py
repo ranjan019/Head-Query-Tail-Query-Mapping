@@ -75,7 +75,7 @@ def mapping(head_list,tail_list,url_head_Dict,url_tail_Dict):
                     coPos += 1
                 else:
                     coNeg += 1
-            while coNeg < 3*coPos:
+            while coNeg < coPos:
                 randomUrl = random.choice(head_keys)
                 if randomUrl == urlKey:
                     continue

@@ -15,7 +15,7 @@ def calcJaccard(list1,list2):
 	uni=s1.union(s2)
 	if len(uni)==0:
 		return 0
-		
+
 	return float(len(inters))/len(uni)
 
 def makingQueryPairVector(query1, query2,model,dxtr):
@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
 	# creating the dexter client
 	print "creating dexter client"
-	#dxtr = pydexter.DexterClient("http://dexterdemo.isti.cnr.it:8080/dexter-webapp/api/")
+	dxtr = pydexter.DexterClient("http://dexterdemo.isti.cnr.it:8080/dexter-webapp/api/")
 
 	# processing the query log to obtain training and test data
 	train_feature_matrix=np.array([])
@@ -82,9 +82,9 @@ if __name__ == '__main__':
 				test_label = t
 				test_feature_matrix = [test_feature_vector]
 
-	
+
 	#print np.shape(test_feature_matrix),np.shape(test_label)
-	
+
 	train_X=np.array(test_feature_matrix[:-6000])
 	train_Y = np.array(test_label[:-6000])
 
@@ -118,6 +118,6 @@ if __name__ == '__main__':
 			coN += 1
 		if predict_Y[i]==test_Y[i]:
 			precision+=1
-	
+
 	print "precision is: ",precision/len(predict_Y)
 	print co,coP,coN
