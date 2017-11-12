@@ -35,34 +35,24 @@ Otherwise the pair is deemed irrelevant i.e. 0.
 7. We feed this query pair vector into SVM to train the model.
 8. Testing leads to an accuracy of 78%.
 
-### Markdown
+### User Study:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+We made a google form survey to conduct user study judging satisfaction of users with regards to the model.
+[Survey Link](https://goo.gl/forms/EMtoE3pf3NaZXcT32)
 
-```markdown
-Syntax highlighted code block
+**The description of the user study.**
 
-# Header 1
-## Header 2
-### Header 3
+"In each section of the form you'll be given a google search query (Q1) and 3 different snapshots of search results follow.
 
-- Bulleted
-- List
+For each of the search result, you have to assess how the search result satisfies the information needs of the query on a scale of 0-5.
+0 means completely useless. 5 means that the information need is fulfilled, and you are happy with it.
 
-1. Numbered
-2. List
+There are 8 such sections in this form. "
 
-**Bold** and _Italic_ and `Code` text
+**Analysis link:** [Analysis](https://docs.google.com/document/d/1z0DhYsh5hhhxzttlt9jYHbw3PaMD0k47R1pVLcAS6W0/edit?usp=sharing)
 
-[Link](url) and ![Image](src)
-```
+**Highlight of the analysis:**
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+![Final Table](https://imgur.com/a/KWUMY)
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ranjan019/Head-Query-Tail-Query-Mapping/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
