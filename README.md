@@ -53,6 +53,14 @@ There are 8 such sections in this form. "
 
 **Highlight of the analysis:**
 
-[Final Table](Head-Query-Tail-Query-Mapping/final.png)
+
+Original Query (Avg score 0-5)
+3.85
+
+NN Model (Avg score 0-5)
+2.28
+
+Baseline Model (Avg score 0-5)
+2.46
 
 
