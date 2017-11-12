@@ -35,6 +35,9 @@ Otherwise the pair is deemed irrelevant i.e. 0.
 7. We feed this query pair vector into SVM to train the model.
 8. Testing leads to an accuracy of 78%.
 
+
+[Technical Report](https://docs.google.com/document/d/1BjJ6nQR7G-vXcZsXCzcsFGGy5h0VvzrPheoKHhgRpf4/edit?usp=sharing)
+
 ### User Study:
 
 We made a google form survey to conduct user study judging satisfaction of users with regards to the model.
