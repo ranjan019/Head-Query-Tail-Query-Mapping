@@ -35,6 +35,27 @@ Otherwise the pair is deemed irrelevant i.e. 0.
 7. We feed this query pair vector into SVM to train the model.
 8. Testing leads to an accuracy of 78%.
 
+#### Model 3: Neural Network based
+
+	In this method we tried two different approaches, one is to take the average of word2vec values of all words in a given query and use a single word2vec for a whole query, whereas in the other model we used LSTM architecture and word embeddings for representing a query where the final length of the head and tail queries are different as in a head query comprised of 5 words whereas the tail query has 10 words representation.
+
+##### 1. Method 1:	
+1. First convert each word into its vector form using different models ( tried both pre trained model on google new corpus and also a model which we trained on wikipedia data dump)
+2. Resultant vector of a query is calculated by taking the average of all the vectors of the words that are present in that query.
+3. Concatenated both the vector representation of head and tail query.
+4. Passed to a neural network which has two dense hidden layers.
+5. Output is a single node which is a binary classifier.
+ 
+
+##### Method 2:
+
+1. Since in the last method we are losing the sequential information hence to capture the information we now used LSTM model 2. for both head and tail queries.
+3. Size of words in head queries are fixed to 5 whereas it is 10 for tail query.
+4. Used word embedding for word to vec conversion. 
+5. For each pair of queries we used two different LSTM model one for each head and tail.
+6. Output of that LSTM model is then passed to a dense neural net layer.
+7. And finally the final output through a single node using binary classifier.
+
 
 [Technical Report](https://docs.google.com/document/d/1BjJ6nQR7G-vXcZsXCzcsFGGy5h0VvzrPheoKHhgRpf4/edit?usp=sharing)
 
@@ -64,6 +85,16 @@ NN Model (Avg score 0-5)
 2.28
 
 Baseline Model (Avg score 0-5)
-2.46
+2.25
+
+
+Important links:
+1 [Slideshare link:](https://www.slideshare.net/secret/IKVFW8phbBzcWt)
+2 [Survey link:](https://goo.gl/forms/EMtoE3pf3NaZXcT32)
+3 [Survey Responses link:](https://docs.google.com/spreadsheets/d/10xQFeOT6Iq1QkL_sPx3Hb9juIEgkXPIs9pnkQ0CBDXw/edit?usp=sharing)
+4 [User study survey analysis link:](https://docs.google.com/document/d/1z0DhYsh5hhhxzttlt9jYHbw3PaMD0k47R1pVLcAS6W0/edit?usp=sharing)
+5 [github project link 1:](https://github.com/ranjan019/Head-Query-Tail-Query-Mapping)
+	[github project link 2:](https://github.com/Viditjn/Head-Tail-Query-Mapping)
+6 [github project website:](https://ranjan019.github.io/Head-Query-Tail-Query-Mapping/)
 
 
